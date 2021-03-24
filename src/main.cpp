@@ -3,13 +3,9 @@
 
 #define ITER 2
 
-/*
-uint8_t dbl(uint8_t x) {
-  return 2*x;
-}
-*/
-
-uint8_t dbl(uint8_t);
+// name mangling : https://stackoverflow.com/questions/39934392/avr-gcc-not-linking-c-with-assembly-function
+//  wikipedia : https://en.wikipedia.org/wiki/Name_mangling
+extern "C" uint8_t dbl(uint8_t);
 
 
 int main() {
@@ -23,5 +19,5 @@ int main() {
     PORTB ^= 1 << 5;
   }
 
-  while(1) { }
+  while(1);
 }
