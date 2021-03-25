@@ -1,0 +1,7 @@
+0000003e a __SP_H__
+0000003d a __SP_L__
+0000003f a __SREG__
+00000000 a __tmp_reg__
+00000001 a __zero_reg__
+         U dbl
+00000000 T main

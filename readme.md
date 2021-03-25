@@ -2,15 +2,48 @@
 
 This example aims to show how to create a function in c that calls a function in assembler that itself call a c function.
 
+## Misc
+
 Infos :
 
 Interesting map to explain how to build a program in c/asm : 
     - https://www.avrfreaks.net/forum/avr-gcc-compiling-linking-and-assembly
     - Advanced C / Assembly Mixing : https://www.avrfreaks.net/forum/advanced-c-assembly-mixing
 
+Steps : Preprocessor / building / linking / flashing
+
+## General
+
+AVR architecture : 
+
+![block_diagram_avr_arch.png](./pics/block_diagram_avr_arch.png)
+
+Interrupt flag
+
+![interrupt_flag.png](./pics/interrupt_flag.png)
+
 Data memory :
 
 ![data-memory.png](./pics/data-memory.png)
+
+Calling convention : https://gcc.gnu.org/wiki/avr-gcc
+
+![calling_convention.png](./pics/calling_convention.png)
+
+## Ubuntu 
+
+Installing avr toolchain : `sudo apt-get install gcc-avr binutils-avr avr-libc` (+ debugger/emulator : `sudo apt-get install gdb-avr`)
+
+Install avr libc libraries with command : `sudo apt-get install avr-libc gcc-avr`
+
+Install avrdude  : `sudo apt install avrdude`
+
+Cd to `cd /mnt/c/Users/ldade/Documents/ProjetsRecherche/Embedded/ATmega328p-assembler-c`
+
+Run : `./scripts/build.sh`
+
+
+## Windows : Obsolete
 
 Build : 
 - `main.cpp` : `C:/Users/ldade/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe -mmcu=atmega328p -DF_CPU=16000000L -DPLATFORMIO=50101 -DARDUINO_AVR_PRO -Iinclude -Isrc -O2 -c src/main.cpp -o .pio\build\pro16MHzatmega328\src\main.cpp.o`
