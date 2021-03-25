@@ -2,6 +2,12 @@
 
 This example aims to show how to create a function in c that calls a function in assembler that itself call a c function.
 
+Ideas & todos :
+- create a function with several parameters
+- pointer to a value as parameter, pointer to a function as parameter
+- handle static memory in assembler (bottom of stack)
+- think about multithreading and stacks (+ size)
+
 ## Misc
 
 Infos :
@@ -30,6 +36,10 @@ Calling convention : https://gcc.gnu.org/wiki/avr-gcc
 
 ![calling_convention.png](./pics/calling_convention.png)
 
+Name mangling : name mangling : 
+- https://stackoverflow.com/questions/39934392/avr-gcc-not-linking-c-with-assembly-function
+- wikipedia : https://en.wikipedia.org/wiki/Name_mangling
+
 ## Ubuntu 
 
 Installing avr toolchain : `sudo apt-get install gcc-avr binutils-avr avr-libc` (+ debugger/emulator : `sudo apt-get install gdb-avr`)
@@ -42,6 +52,7 @@ Cd to `cd /mnt/c/Users/ldade/Documents/ProjetsRecherche/Embedded/ATmega328p-asse
 
 Run : `./scripts/build.sh`
 
+---
 
 ## Windows : Obsolete
 
