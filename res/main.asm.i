@@ -43,5 +43,5 @@
 ; function * 4
 dbl:
     ; assumption : 16 bits argument is stored in r16, r17
-    ADD r24, r25
+    ADD r24, r24
     ret

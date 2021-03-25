@@ -46,7 +46,7 @@ Disassembly of section .text:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000080 <dbl>:
-  80:	89 0f       	add	r24, r25
+  80:	88 0f       	add	r24, r24
   82:	08 95       	ret
 
 00000084 <main>:

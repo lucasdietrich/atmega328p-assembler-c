@@ -490,12 +490,11 @@ _delay_us(double __us)
 # 8 "src/main.cpp"
 extern "C" uint8_t dbl(uint8_t, uint8_t);
 
-
 int main() {
   
-# 12 "src/main.cpp" 3
+# 11 "src/main.cpp" 3
  (*(volatile uint8_t *)((0x04) + 0x20)) 
-# 12 "src/main.cpp"
+# 11 "src/main.cpp"
       = 1 << 5;
 
   uint8_t iter = dbl(4, 2);
@@ -504,9 +503,9 @@ int main() {
     _delay_ms(500);
 
     
-# 19 "src/main.cpp" 3
+# 18 "src/main.cpp" 3
    (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 19 "src/main.cpp"
+# 18 "src/main.cpp"
          ^= 1 << 5;
   }
 
