@@ -1,3 +1,4 @@
+0000000c T call_cb
 00000000 T dbl
 00000004 T qtr
          U tpl

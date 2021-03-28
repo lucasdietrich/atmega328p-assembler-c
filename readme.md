@@ -7,7 +7,8 @@ Ideas & todos :
 - pointer to a value as parameter, pointer to a function as parameter
 - handle static memory in assembler (bottom of stack)
 - think about multithreading and stacks (+ size)
-- confirm that optmization option -Os if for space optimization and -O2 is for time optimization
+- confirm that optmization option -Os if for space optimization and -O2 is for time optimization, -O0 : disable optimization
+- sometimes interesting to disable optimization to see what is totally generated (see disassembly)
 
 ## General
 
@@ -50,7 +51,7 @@ Data memory :
 
 ![data-memory.png](./pics/data-memory.png)
 
-Calling convention : https://gcc.gnu.org/wiki/avr-gcc
+Calling convention : https://gcc.gnu.org/wiki/avr-gcc#Calling_Convention
 
 ![calling_convention.png](./pics/calling_convention.png)
 
@@ -61,6 +62,10 @@ Binutils : https://www.gnu.org/savannah-checkouts/non-gnu/avr-libc/user-manual/o
 Ran on ATmega168 :
 
 ![ram_location_atmega168.png](./pics/ram_location_atmega168.png)
+
+Set/clear interrupt flag : `sei`, `cli`
+
+![sei_cli.png](./pics/sei_cli.png)
 
 ## Ubuntu 
 

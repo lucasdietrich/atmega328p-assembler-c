@@ -873,15 +873,9 @@ extern char *tmpnam (char *s);
 
 }
 # 6 "src/main.cpp" 2
+# 21 "src/main.cpp"
 
-
-
-
-
-
-
-
-# 13 "src/main.cpp"
+# 21 "src/main.cpp"
 extern "C" uint8_t dbl(uint8_t, uint8_t);
 
 extern "C" uint8_t qtr(uint8_t, uint8_t, uint8_t, uint8_t);
@@ -894,32 +888,140 @@ extern "C" {
   }
 }
 
+typedef struct {
+  uint32_t a;
+  uint32_t b;
+} data_t;
+
+void alter(data_t *s) {
+  s->a++;
+  s->b--;
+}
 
 
-extern "C" void call(uint8_t (*) (uint8_t), void *);
 
+extern "C" void call_cb(void (*) (data_t *), void *);
+
+void call_cb2(void (*func) (data_t *), void *context) {
+  func((data_t*) context);
+}
 
 void USART_Init();
 void USART_Transmit(uint8_t data);
 
+data_t mystruct = {
+  .a = 0b0100000,
+  .b = 0b0100000
+};
+
 int main() {
+
   
-# 34 "src/main.cpp" 3
+# 61 "src/main.cpp" 3
  (*(volatile uint8_t *)((0x04) + 0x20)) 
-# 34 "src/main.cpp"
+# 61 "src/main.cpp"
       = 1 << 5;
 
   uint8_t iter = qtr(2, 2, 2, 2);
-# 53 "src/main.cpp"
+
+
+  call_cb(alter, (void*) &mystruct);
+
+
+
+
+
+  static char message[20];
+
+  USART_Init();
+
+
+  sprintf(message, "value = %d\n", iter);
+
+  for(uint8_t i = 0; i < strlen(message); i++) {
+    USART_Transmit((uint8_t) message[i]);
+  }
+
+
+  sprintf(message, "a=%d & b=%d\n", (uint8_t) mystruct.a, (uint8_t) mystruct.b);
+
+  for(uint8_t i = 0; i < strlen(message); i++) {
+    USART_Transmit((uint8_t) message[i]);
+  }
+
+
+
+
   for(uint8_t i = 0; i < iter; i++) {
     _delay_ms(500);
 
     
-# 56 "src/main.cpp" 3
+# 96 "src/main.cpp" 3
    (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 56 "src/main.cpp"
+# 96 "src/main.cpp"
          ^= 1 << 5;
   }
 
   while(1);
+}
+# 116 "src/main.cpp"
+void USART_Init()
+{
+  
+# 118 "src/main.cpp" 3
+ (*(volatile uint8_t *)(0xC5)) 
+# 118 "src/main.cpp"
+        = (uint8_t) (103 >> 8);
+  
+# 119 "src/main.cpp" 3
+ (*(volatile uint8_t *)(0xC4)) 
+# 119 "src/main.cpp"
+        = (uint8_t) 103;
+
+  
+# 121 "src/main.cpp" 3
+ (*(volatile uint8_t *)(0xC1)) 
+# 121 "src/main.cpp"
+        = (1 << 
+# 121 "src/main.cpp" 3
+                4
+# 121 "src/main.cpp"
+                     ) | (1 << 
+# 121 "src/main.cpp" 3
+                               3
+# 121 "src/main.cpp"
+                                    );
+
+  
+# 123 "src/main.cpp" 3
+ (*(volatile uint8_t *)(0xC2)) 
+# 123 "src/main.cpp"
+        = (0<<
+# 123 "src/main.cpp" 3
+              3
+# 123 "src/main.cpp"
+                   ) | (3 << 
+# 123 "src/main.cpp" 3
+                             1
+# 123 "src/main.cpp"
+                                   );
+}
+
+void USART_Transmit( uint8_t data )
+{
+  while (!(
+# 128 "src/main.cpp" 3
+          (*(volatile uint8_t *)(0xC0)) 
+# 128 "src/main.cpp"
+                 & ( 1<<
+# 128 "src/main.cpp" 3
+                        5
+# 128 "src/main.cpp"
+                             )));
+
+  
+# 130 "src/main.cpp" 3
+ (*(volatile uint8_t *)(0xC6)) 
+# 130 "src/main.cpp"
+      = data;
 }

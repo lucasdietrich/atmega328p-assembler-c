@@ -3,6 +3,7 @@
 .global dbl
 .global tpl
 .global qtr
+.global call_cb
 
 ; uint8_t dbl(uint8_t, uint8_t)
 ; @see : https://gcc.gnu.org/wiki/avr-gcc#Calling_Convention
@@ -35,4 +36,29 @@ dbl:
 qtr:
     call tpl        ; we sum r24, r22 and r20 -> r24 (return value)
     add r24, r18    ; we add the result with r18 and return it
+    ret
+
+; void call(void (*) (data_t *), void *)
+; this function call the function at the adress given as parameter with the context pointer as parameter
+;
+call_cb:
+    push r30
+    push r31
+
+    ; X,Y,Z: Indirect Address Register
+    ;   (X=R27:R26, Y=R29:R28 and Z=R31:R30)
+
+    ; set function address in Z
+    mov r30, r24
+    mov r31, r25
+
+    ; set function context
+    mov r24, r22
+    mov r25, r23
+
+    icall  ; call function (addr in Z)
+
+    pop r31
+    pop r30
+
     ret

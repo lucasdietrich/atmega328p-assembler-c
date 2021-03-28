@@ -1,9 +1,19 @@
+00000044 T _Z10USART_Initv
+0000005c T _Z14USART_Transmith
+00000000 T _Z5alterP6data_t
+0000003e T _Z8call_cb2PFvP6data_tEPv
+00000000 b _ZZ4mainE7message
 0000003e a __SP_H__
 0000003d a __SP_L__
 0000003f a __SREG__
+         U __do_clear_bss
+         U __do_copy_data
 00000000 a __tmp_reg__
 00000001 a __zero_reg__
+         U call_cb
          U dbl
 00000000 T main
+00000000 D mystruct
          U qtr
-00000000 T tpl
+         U sprintf
+00000030 T tpl

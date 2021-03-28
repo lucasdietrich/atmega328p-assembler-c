@@ -10,29 +10,30 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          6092 (bytes into file)
+  Start of section headers:          9084 (bytes into file)
   Flags:                             0x5, avr:5
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
-  Number of program headers:         2
+  Number of program headers:         3
   Size of section headers:           40 (bytes)
-  Number of section headers:         12
-  Section header string table index: 9
+  Number of section headers:         13
+  Section header string table index: 10
 
 Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
-  [ 1] .data             PROGBITS        00800100 00014a 000000 00  WA  0   0  1
-  [ 2] .text             PROGBITS        00000000 000074 0000d6 00  AX  0   0  2
-  [ 3] .comment          PROGBITS        00000000 00014a 000011 01  MS  0   0  1
-  [ 4] .note.gnu.avr.dev NOTE            00000000 00015c 000040 00      0   0  4
-  [ 5] .debug_info       PROGBITS        00000000 00019c 0005f4 00      0   0  1
-  [ 6] .debug_abbrev     PROGBITS        00000000 000790 0005a2 00      0   0  1
-  [ 7] .debug_line       PROGBITS        00000000 000d32 00001a 00      0   0  1
-  [ 8] .debug_str        PROGBITS        00000000 000d4c 000208 00      0   0  1
-  [ 9] .shstrtab         STRTAB          00000000 00174f 00007a 00      0   0  1
-  [10] .symtab           SYMTAB          00000000 000f54 0004b0 10     11  17  4
-  [11] .strtab           STRTAB          00000000 001404 00034b 00      0   0  1
+  [ 1] .data             PROGBITS        00800100 0008b4 000022 00  WA  0   0  1
+  [ 2] .text             PROGBITS        00000000 000094 000820 00  AX  0   0  2
+  [ 3] .bss              NOBITS          00800122 0008d6 000014 00  WA  0   0  1
+  [ 4] .comment          PROGBITS        00000000 0008d6 000011 01  MS  0   0  1
+  [ 5] .note.gnu.avr.dev NOTE            00000000 0008e8 000040 00      0   0  4
+  [ 6] .debug_info       PROGBITS        00000000 000928 0005f4 00      0   0  1
+  [ 7] .debug_abbrev     PROGBITS        00000000 000f1c 0005a2 00      0   0  1
+  [ 8] .debug_line       PROGBITS        00000000 0014be 00001a 00      0   0  1
+  [ 9] .debug_str        PROGBITS        00000000 0014d8 000208 00      0   0  1
+  [10] .shstrtab         STRTAB          00000000 0022fb 00007f 00      0   0  1
+  [11] .symtab           SYMTAB          00000000 0016e0 000760 10     12  40  4
+  [12] .strtab           STRTAB          00000000 001e40 0004bb 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
@@ -42,13 +43,15 @@ There are no section groups in this file.
 
 Program Headers:
   Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
-  LOAD           0x000074 0x00000000 0x00000000 0x000d6 0x000d6 R E 0x2
-  LOAD           0x00014a 0x00800100 0x000000d6 0x00000 0x00000 RW  0x1
+  LOAD           0x000094 0x00000000 0x00000000 0x00820 0x00820 R E 0x2
+  LOAD           0x0008b4 0x00800100 0x00000820 0x00022 0x00022 RW  0x1
+  LOAD           0x0008d6 0x00800122 0x00800122 0x00000 0x00014 RW  0x1
 
  Section to Segment mapping:
   Segment Sections...
    00     .text 
    01     .data 
+   02     .bss 
 
 There is no dynamic section in this file.
 
@@ -56,86 +59,129 @@ There are no relocations in this file.
 
 The decoding of unwind sections for machine type Atmel AVR 8-bit microcontroller is not currently supported.
 
-Symbol table '.symtab' contains 75 entries:
+Symbol table '.symtab' contains 118 entries:
    Num:    Value  Size Type    Bind   Vis      Ndx Name
      0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
      1: 00800100     0 SECTION LOCAL  DEFAULT    1 
      2: 00000000     0 SECTION LOCAL  DEFAULT    2 
-     3: 00000000     0 SECTION LOCAL  DEFAULT    3 
+     3: 00800122     0 SECTION LOCAL  DEFAULT    3 
      4: 00000000     0 SECTION LOCAL  DEFAULT    4 
      5: 00000000     0 SECTION LOCAL  DEFAULT    5 
      6: 00000000     0 SECTION LOCAL  DEFAULT    6 
      7: 00000000     0 SECTION LOCAL  DEFAULT    7 
      8: 00000000     0 SECTION LOCAL  DEFAULT    8 
-     9: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.cpp
-    10: 0000003e     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_H__
-    11: 0000003d     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_L__
-    12: 0000003f     0 NOTYPE  LOCAL  DEFAULT  ABS __SREG__
-    13: 00000000     0 NOTYPE  LOCAL  DEFAULT  ABS __tmp_reg__
-    14: 00000001     0 NOTYPE  LOCAL  DEFAULT  ABS __zero_reg__
-    15: 00000000     0 FILE    LOCAL  DEFAULT  ABS _exit.o
-    16: 000000d4     0 NOTYPE  LOCAL  DEFAULT    2 __stop_program
-    17: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_22
-    18: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_1
-    19: 0000ffa0     0 NOTYPE  GLOBAL DEFAULT  ABS __DATA_REGION_LENGTH__
-    20: 00000000     0 NOTYPE  GLOBAL DEFAULT  ABS __TEXT_REGION_ORIGIN__
-    21: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __trampolines_start
-    22: 000000d6     0 NOTYPE  GLOBAL DEFAULT    2 _etext
-    23: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_24
-    24: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_12
-    25: 0000007c     0 NOTYPE  GLOBAL DEFAULT    2 __bad_interrupt
-    26: 000000d6     0 NOTYPE  GLOBAL DEFAULT  ABS __data_load_end
-    27: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_6
-    28: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __trampolines_end
-    29: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_3
-    30: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_23
-    31: 000000d6     0 NOTYPE  GLOBAL DEFAULT  ABS __data_load_start
-    32: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __dtors_end
-    33: 00000400     0 NOTYPE  GLOBAL DEFAULT  ABS __LOCK_REGION_LENGTH__
-    34: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_25
-    35: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_11
-    36: 00000068     0 NOTYPE  WEAK   DEFAULT    2 __init
-    37: 0000008e     0 NOTYPE  GLOBAL DEFAULT    2 dbl
-    38: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_13
-    39: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_17
-    40: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_19
-    41: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_7
-    42: 00810000     0 NOTYPE  GLOBAL DEFAULT    2 __eeprom_end
-    43: 00000000     0 NOTYPE  GLOBAL DEFAULT    2 __vectors
-    44: 00000000     0 NOTYPE  WEAK   DEFAULT    2 __vector_default
-    45: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_5
-    46: 00000400     0 NOTYPE  GLOBAL DEFAULT  ABS __SIGNATURE_REGION_LENGTH
-    47: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __ctors_start
-    48: 0000009a    56 FUNC    GLOBAL DEFAULT    2 main
-    49: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_4
-    50: 00800060     0 NOTYPE  GLOBAL DEFAULT  ABS __DATA_REGION_ORIGIN__
-    51: 00000080    14 FUNC    GLOBAL DEFAULT    2 tpl
-    52: 00000000     0 NOTYPE  WEAK   DEFAULT  ABS __heap_end
-    53: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_9
-    54: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_2
-    55: 00000400     0 NOTYPE  GLOBAL DEFAULT  ABS __USER_SIGNATURE_REGION_L
-    56: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_21
-    57: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_15
-    58: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __dtors_start
-    59: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __ctors_end
-    60: 000008ff     0 NOTYPE  WEAK   DEFAULT  ABS __stack
-    61: 00800100     0 NOTYPE  GLOBAL DEFAULT    1 _edata
-    62: 00800100     0 NOTYPE  GLOBAL DEFAULT    2 _end
-    63: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_8
-    64: 000000d2     0 NOTYPE  WEAK   HIDDEN     2 exit
-    65: 00000092     0 NOTYPE  GLOBAL DEFAULT    2 qtr
-    66: 00010000     0 NOTYPE  GLOBAL DEFAULT  ABS __EEPROM_REGION_LENGTH__
-    67: 000000d2     0 NOTYPE  GLOBAL HIDDEN     2 _exit
-    68: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_14
-    69: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_10
-    70: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_16
-    71: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_18
-    72: 00000003     0 NOTYPE  GLOBAL DEFAULT  ABS __FUSE_REGION_LENGTH__
-    73: 00020000     0 NOTYPE  GLOBAL DEFAULT  ABS __TEXT_REGION_LENGTH__
-    74: 0000007c     0 NOTYPE  WEAK   DEFAULT    2 __vector_20
+     9: 00000000     0 SECTION LOCAL  DEFAULT    9 
+    10: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.cpp
+    11: 0000003e     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_H__
+    12: 0000003d     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_L__
+    13: 0000003f     0 NOTYPE  LOCAL  DEFAULT  ABS __SREG__
+    14: 00000000     0 NOTYPE  LOCAL  DEFAULT  ABS __tmp_reg__
+    15: 00000001     0 NOTYPE  LOCAL  DEFAULT  ABS __zero_reg__
+    16: 00800122    20 OBJECT  LOCAL  DEFAULT    3 _ZZ4mainE7message
+    17: 00000000     0 FILE    LOCAL  DEFAULT  ABS _exit.o
+    18: 0000081e     0 NOTYPE  LOCAL  DEFAULT    2 __stop_program
+    19: 00000000     0 FILE    LOCAL  DEFAULT  ABS _clear_bss.o
+    20: 00000094     0 NOTYPE  LOCAL  DEFAULT    2 .do_clear_bss_start
+    21: 00000092     0 NOTYPE  LOCAL  DEFAULT    2 .do_clear_bss_loop
+    22: 00000000     0 FILE    LOCAL  DEFAULT  ABS sprintf.c
+    23: 0000003e     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_H__
+    24: 0000003d     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_L__
+    25: 0000003f     0 NOTYPE  LOCAL  DEFAULT  ABS __SREG__
+    26: 00000000     0 NOTYPE  LOCAL  DEFAULT  ABS __tmp_reg__
+    27: 00000001     0 NOTYPE  LOCAL  DEFAULT  ABS __zero_reg__
+    28: 00000000     0 FILE    LOCAL  DEFAULT  ABS vfprintf.c
+    29: 0000003e     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_H__
+    30: 0000003d     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_L__
+    31: 0000003f     0 NOTYPE  LOCAL  DEFAULT  ABS __SREG__
+    32: 00000000     0 NOTYPE  LOCAL  DEFAULT  ABS __tmp_reg__
+    33: 00000001     0 NOTYPE  LOCAL  DEFAULT  ABS __zero_reg__
+    34: 00000000     0 FILE    LOCAL  DEFAULT  ABS fputc.c
+    35: 0000003e     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_H__
+    36: 0000003d     0 NOTYPE  LOCAL  DEFAULT  ABS __SP_L__
+    37: 0000003f     0 NOTYPE  LOCAL  DEFAULT  ABS __SREG__
+    38: 00000000     0 NOTYPE  LOCAL  DEFAULT  ABS __tmp_reg__
+    39: 00000001     0 NOTYPE  LOCAL  DEFAULT  ABS __zero_reg__
+    40: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_22
+    41: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_1
+    42: 0000ffa0     0 NOTYPE  GLOBAL DEFAULT  ABS __DATA_REGION_LENGTH__
+    43: 000007e6    54 NOTYPE  GLOBAL HIDDEN     2 __epilogue_restores__
+    44: 00000000     0 NOTYPE  GLOBAL DEFAULT  ABS __TEXT_REGION_ORIGIN__
+    45: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __trampolines_start
+    46: 00000820     0 NOTYPE  GLOBAL DEFAULT    2 _etext
+    47: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_24
+    48: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_12
+    49: 000006f2   188 FUNC    GLOBAL DEFAULT    2 __ultoa_invert
+    50: 000000a2     0 NOTYPE  GLOBAL DEFAULT    2 __bad_interrupt
+    51: 00000842     0 NOTYPE  GLOBAL DEFAULT  ABS __data_load_end
+    52: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_6
+    53: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __trampolines_end
+    54: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_3
+    55: 0000011c     0 NOTYPE  GLOBAL DEFAULT    2 call_cb
+    56: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_23
+    57: 00000820     0 NOTYPE  GLOBAL DEFAULT  ABS __data_load_start
+    58: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __dtors_end
+    59: 00800136     0 NOTYPE  GLOBAL DEFAULT    3 __bss_end
+    60: 00000400     0 NOTYPE  GLOBAL DEFAULT  ABS __LOCK_REGION_LENGTH__
+    61: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_25
+    62: 00000664    22 FUNC    GLOBAL DEFAULT    2 strnlen
+    63: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_11
+    64: 00000068     0 NOTYPE  WEAK   DEFAULT    2 __init
+    65: 00000110     0 NOTYPE  GLOBAL DEFAULT    2 dbl
+    66: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_13
+    67: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_17
+    68: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_19
+    69: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_7
+    70: 0000008a    16 NOTYPE  GLOBAL HIDDEN     2 __do_clear_bss
+    71: 0000064e    22 FUNC    GLOBAL DEFAULT    2 strnlen_P
+    72: 00810000     0 NOTYPE  GLOBAL DEFAULT    4 __eeprom_end
+    73: 00000000     0 NOTYPE  GLOBAL DEFAULT    2 __vectors
+    74: 00800122     0 NOTYPE  GLOBAL DEFAULT    1 __data_end
+    75: 000000a6    48 FUNC    GLOBAL DEFAULT    2 _Z5alterP6data_t
+    76: 00000000     0 NOTYPE  WEAK   DEFAULT    2 __vector_default
+    77: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_5
+    78: 00000400     0 NOTYPE  GLOBAL DEFAULT  ABS __SIGNATURE_REGION_LENGTH
+    79: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __ctors_start
+    80: 00000074    22 NOTYPE  GLOBAL HIDDEN     2 __do_copy_data
+    81: 00800122     0 NOTYPE  GLOBAL DEFAULT    3 __bss_start
+    82: 00000130   280 FUNC    GLOBAL DEFAULT    2 main
+    83: 00800100     8 OBJECT  GLOBAL DEFAULT    1 mystruct
+    84: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_4
+    85: 00800060     0 NOTYPE  GLOBAL DEFAULT  ABS __DATA_REGION_ORIGIN__
+    86: 000000d6    14 FUNC    GLOBAL DEFAULT    2 tpl
+    87: 00000000     0 NOTYPE  WEAK   DEFAULT  ABS __heap_end
+    88: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_9
+    89: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_2
+    90: 00000400     0 NOTYPE  GLOBAL DEFAULT  ABS __USER_SIGNATURE_REGION_L
+    91: 00000102    14 FUNC    GLOBAL DEFAULT    2 _Z14USART_Transmith
+    92: 00000248    68 FUNC    GLOBAL DEFAULT    2 sprintf
+    93: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_21
+    94: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_15
+    95: 0000067a   120 FUNC    GLOBAL DEFAULT    2 fputc
+    96: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __dtors_start
+    97: 00000068     0 NOTYPE  GLOBAL DEFAULT    2 __ctors_end
+    98: 000008ff     0 NOTYPE  WEAK   DEFAULT  ABS __stack
+    99: 00800122     0 NOTYPE  GLOBAL DEFAULT    1 _edata
+   100: 00800136     0 NOTYPE  GLOBAL DEFAULT    4 _end
+   101: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_8
+   102: 000000ea    24 FUNC    GLOBAL DEFAULT    2 _Z10USART_Initv
+   103: 0000081c     0 NOTYPE  WEAK   HIDDEN     2 exit
+   104: 00000114     0 NOTYPE  GLOBAL DEFAULT    2 qtr
+   105: 00010000     0 NOTYPE  GLOBAL DEFAULT  ABS __EEPROM_REGION_LENGTH__
+   106: 0000081c     0 NOTYPE  GLOBAL HIDDEN     2 _exit
+   107: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_14
+   108: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_10
+   109: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_16
+   110: 00800100     0 NOTYPE  GLOBAL DEFAULT    1 __data_start
+   111: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_18
+   112: 00000003     0 NOTYPE  GLOBAL DEFAULT  ABS __FUSE_REGION_LENGTH__
+   113: 00020000     0 NOTYPE  GLOBAL DEFAULT  ABS __TEXT_REGION_LENGTH__
+   114: 000000a2     0 NOTYPE  WEAK   DEFAULT    2 __vector_20
+   115: 000007ae    56 NOTYPE  GLOBAL HIDDEN     2 __prologue_saves__
+   116: 0000028c   962 FUNC    GLOBAL DEFAULT    2 vfprintf
+   117: 000000e4     6 FUNC    GLOBAL DEFAULT    2 _Z8call_cb2PFvP6data_tEPv
 
 No version information found in this file.
 
-Displaying notes found at file offset 0x0000015c with length 0x00000040:
+Displaying notes found at file offset 0x000008e8 with length 0x00000040:
   Owner                 Data size	Description
   AVR                  0x0000002d	NT_VERSION (version)

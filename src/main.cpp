@@ -4,7 +4,15 @@
 #include <string.h>
 #include <stdio.h>
 
-// #define UART_DEBUG
+#define UART_DEBUG
+
+/*
+;Initialize the microcontroller stack pointer
+                LDI    R16, low(RAMEND)
+                OUT    SPL, R16
+                LDI    R16, high(RAMEND)
+                OUT    SPH, R16
+*/
 
 #define VALUE 2
 
@@ -22,22 +30,46 @@ extern "C" {
   }
 }
 
+typedef struct {
+  uint32_t a;
+  uint32_t b;
+} data_t;
+
+void alter(data_t *s) {
+  s->a++;
+  s->b--;
+}
+
 // assembler function that call a function defined by : uint8_t (*) (uint8_t)
 // give to this function a parameter which is a pointer to its context (type void *)
-extern "C" void call(uint8_t (*) (uint8_t), void *);
+extern "C" void call_cb(void (*) (data_t *), void *);
 
+void call_cb2(void (*func) (data_t *), void *context) {
+  func((data_t*) context);
+}
 
 void USART_Init();
 void USART_Transmit(uint8_t data);
 
+data_t mystruct = {
+  .a = 0b0100000,
+  .b = 0b0100000
+};
+
 int main() {
+  // setup led
   DDRB = 1 << 5;
 
   uint8_t iter = qtr(VALUE, VALUE, VALUE, VALUE);
+
+  // call the alter function that change the structure values
+  call_cb(alter, (void*) &mystruct); // eq to call_cb2 ( ... )
   
 #ifdef UART_DEBUG
   // UART transmit
-  static char message[10];
+
+  // DEBUG dbl
+  static char message[20];
 
   USART_Init();
 
@@ -47,6 +79,14 @@ int main() {
   for(uint8_t i = 0; i < strlen(message); i++) {
     USART_Transmit((uint8_t) message[i]);
   }
+
+  // DEBUG call( ... )
+  sprintf(message, "a=%d & b=%d\n", (uint8_t) mystruct.a, (uint8_t) mystruct.b);
+
+  for(uint8_t i = 0; i < strlen(message); i++) {
+    USART_Transmit((uint8_t) message[i]);
+  }
+
   // END of UART transmit
 #endif
 
