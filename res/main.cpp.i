@@ -482,30 +482,442 @@ _delay_us(double __us)
 }
 # 3 "src/main.cpp" 2
 
+# 1 "/usr/lib/avr/include/string.h" 1 3
+# 46 "/usr/lib/avr/include/string.h" 3
+# 1 "/usr/lib/gcc/avr/5.4.0/include/stddef.h" 1 3 4
+# 216 "/usr/lib/gcc/avr/5.4.0/include/stddef.h" 3 4
+typedef unsigned int size_t;
+# 47 "/usr/lib/avr/include/string.h" 2 3
+# 58 "/usr/lib/avr/include/string.h" 3
+extern "C" {
+# 125 "/usr/lib/avr/include/string.h" 3
+extern int ffs(int __val) __attribute__((__const__));
 
 
 
 
 
-# 8 "src/main.cpp"
+extern int ffsl(long __val) __attribute__((__const__));
+
+
+
+
+
+__extension__ extern int ffsll(long long __val) __attribute__((__const__));
+# 150 "/usr/lib/avr/include/string.h" 3
+extern void *memccpy(void *, const void *, int, size_t);
+# 162 "/usr/lib/avr/include/string.h" 3
+extern void *memchr(const void *, int, size_t) __attribute__((__pure__));
+# 180 "/usr/lib/avr/include/string.h" 3
+extern int memcmp(const void *, const void *, size_t) __attribute__((__pure__));
+# 191 "/usr/lib/avr/include/string.h" 3
+extern void *memcpy(void *, const void *, size_t);
+# 203 "/usr/lib/avr/include/string.h" 3
+extern void *memmem(const void *, size_t, const void *, size_t) __attribute__((__pure__));
+# 213 "/usr/lib/avr/include/string.h" 3
+extern void *memmove(void *, const void *, size_t);
+# 225 "/usr/lib/avr/include/string.h" 3
+extern void *memrchr(const void *, int, size_t) __attribute__((__pure__));
+# 235 "/usr/lib/avr/include/string.h" 3
+extern void *memset(void *, int, size_t);
+# 248 "/usr/lib/avr/include/string.h" 3
+extern char *strcat(char *, const char *);
+# 262 "/usr/lib/avr/include/string.h" 3
+extern char *strchr(const char *, int) __attribute__((__pure__));
+# 274 "/usr/lib/avr/include/string.h" 3
+extern char *strchrnul(const char *, int) __attribute__((__pure__));
+# 287 "/usr/lib/avr/include/string.h" 3
+extern int strcmp(const char *, const char *) __attribute__((__pure__));
+# 305 "/usr/lib/avr/include/string.h" 3
+extern char *strcpy(char *, const char *);
+# 320 "/usr/lib/avr/include/string.h" 3
+extern int strcasecmp(const char *, const char *) __attribute__((__pure__));
+# 333 "/usr/lib/avr/include/string.h" 3
+extern char *strcasestr(const char *, const char *) __attribute__((__pure__));
+# 344 "/usr/lib/avr/include/string.h" 3
+extern size_t strcspn(const char *__s, const char *__reject) __attribute__((__pure__));
+# 364 "/usr/lib/avr/include/string.h" 3
+extern char *strdup(const char *s1);
+# 377 "/usr/lib/avr/include/string.h" 3
+extern size_t strlcat(char *, const char *, size_t);
+# 388 "/usr/lib/avr/include/string.h" 3
+extern size_t strlcpy(char *, const char *, size_t);
+# 399 "/usr/lib/avr/include/string.h" 3
+extern size_t strlen(const char *) __attribute__((__pure__));
+# 411 "/usr/lib/avr/include/string.h" 3
+extern char *strlwr(char *);
+# 422 "/usr/lib/avr/include/string.h" 3
+extern char *strncat(char *, const char *, size_t);
+# 434 "/usr/lib/avr/include/string.h" 3
+extern int strncmp(const char *, const char *, size_t) __attribute__((__pure__));
+# 449 "/usr/lib/avr/include/string.h" 3
+extern char *strncpy(char *, const char *, size_t);
+# 464 "/usr/lib/avr/include/string.h" 3
+extern int strncasecmp(const char *, const char *, size_t) __attribute__((__pure__));
+# 478 "/usr/lib/avr/include/string.h" 3
+extern size_t strnlen(const char *, size_t) __attribute__((__pure__));
+# 491 "/usr/lib/avr/include/string.h" 3
+extern char *strpbrk(const char *__s, const char *__accept) __attribute__((__pure__));
+# 505 "/usr/lib/avr/include/string.h" 3
+extern char *strrchr(const char *, int) __attribute__((__pure__));
+# 515 "/usr/lib/avr/include/string.h" 3
+extern char *strrev(char *);
+# 533 "/usr/lib/avr/include/string.h" 3
+extern char *strsep(char **, const char *);
+# 544 "/usr/lib/avr/include/string.h" 3
+extern size_t strspn(const char *__s, const char *__accept) __attribute__((__pure__));
+# 557 "/usr/lib/avr/include/string.h" 3
+extern char *strstr(const char *, const char *) __attribute__((__pure__));
+# 576 "/usr/lib/avr/include/string.h" 3
+extern char *strtok(char *, const char *);
+# 593 "/usr/lib/avr/include/string.h" 3
+extern char *strtok_r(char *, const char *, char **);
+# 606 "/usr/lib/avr/include/string.h" 3
+extern char *strupr(char *);
+
+
+
+extern int strcoll(const char *s1, const char *s2);
+extern char *strerror(int errnum);
+extern size_t strxfrm(char *dest, const char *src, size_t n);
+
+
+
+}
+# 5 "src/main.cpp" 2
+# 1 "/usr/lib/avr/include/stdio.h" 1 3
+# 45 "/usr/lib/avr/include/stdio.h" 3
+# 1 "/usr/lib/gcc/avr/5.4.0/include/stdarg.h" 1 3 4
+# 40 "/usr/lib/gcc/avr/5.4.0/include/stdarg.h" 3 4
+typedef __builtin_va_list __gnuc_va_list;
+# 98 "/usr/lib/gcc/avr/5.4.0/include/stdarg.h" 3 4
+typedef __gnuc_va_list va_list;
+# 46 "/usr/lib/avr/include/stdio.h" 2 3
+
+
+
+
+# 1 "/usr/lib/gcc/avr/5.4.0/include/stddef.h" 1 3 4
+# 51 "/usr/lib/avr/include/stdio.h" 2 3
+# 244 "/usr/lib/avr/include/stdio.h" 3
+struct __file {
+ char *buf;
+ unsigned char unget;
+ uint8_t flags;
+# 263 "/usr/lib/avr/include/stdio.h" 3
+ int size;
+ int len;
+ int (*put)(char, struct __file *);
+ int (*get)(struct __file *);
+ void *udata;
+};
+# 277 "/usr/lib/avr/include/stdio.h" 3
+typedef struct __file FILE;
+# 399 "/usr/lib/avr/include/stdio.h" 3
+extern "C" {
+
+
+
+
+
+
+
+extern struct __file *__iob[];
+# 419 "/usr/lib/avr/include/stdio.h" 3
+extern FILE *fdevopen(int (*__put)(char, FILE*), int (*__get)(FILE*));
+# 436 "/usr/lib/avr/include/stdio.h" 3
+extern int fclose(FILE *__stream);
+# 610 "/usr/lib/avr/include/stdio.h" 3
+extern int vfprintf(FILE *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+
+extern int vfprintf_P(FILE *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+
+
+extern int fputc(int __c, FILE *__stream);
+
+
+
+
+extern int putc(int __c, FILE *__stream);
+
+
+extern int putchar(int __c);
+# 651 "/usr/lib/avr/include/stdio.h" 3
+extern int printf(const char *__fmt, ...);
+
+
+
+
+
+extern int printf_P(const char *__fmt, ...);
+
+
+
+
+
+
+
+extern int vprintf(const char *__fmt, va_list __ap);
+
+
+
+
+
+extern int sprintf(char *__s, const char *__fmt, ...);
+
+
+
+
+
+extern int sprintf_P(char *__s, const char *__fmt, ...);
+# 687 "/usr/lib/avr/include/stdio.h" 3
+extern int snprintf(char *__s, size_t __n, const char *__fmt, ...);
+
+
+
+
+
+extern int snprintf_P(char *__s, size_t __n, const char *__fmt, ...);
+
+
+
+
+
+extern int vsprintf(char *__s, const char *__fmt, va_list ap);
+
+
+
+
+
+extern int vsprintf_P(char *__s, const char *__fmt, va_list ap);
+# 715 "/usr/lib/avr/include/stdio.h" 3
+extern int vsnprintf(char *__s, size_t __n, const char *__fmt, va_list ap);
+
+
+
+
+
+extern int vsnprintf_P(char *__s, size_t __n, const char *__fmt, va_list ap);
+
+
+
+
+extern int fprintf(FILE *__stream, const char *__fmt, ...);
+
+
+
+
+
+extern int fprintf_P(FILE *__stream, const char *__fmt, ...);
+
+
+
+
+
+
+extern int fputs(const char *__str, FILE *__stream);
+
+
+
+
+extern int fputs_P(const char *__str, FILE *__stream);
+
+
+
+
+
+extern int puts(const char *__str);
+
+
+
+
+extern int puts_P(const char *__str);
+# 764 "/usr/lib/avr/include/stdio.h" 3
+extern size_t fwrite(const void *__ptr, size_t __size, size_t __nmemb,
+         FILE *__stream);
+
+
+
+
+
+
+
+extern int fgetc(FILE *__stream);
+
+
+
+
+extern int getc(FILE *__stream);
+
+
+extern int getchar(void);
+# 812 "/usr/lib/avr/include/stdio.h" 3
+extern int ungetc(int __c, FILE *__stream);
+# 824 "/usr/lib/avr/include/stdio.h" 3
+extern char *fgets(char *__str, int __size, FILE *__stream);
+
+
+
+
+
+
+extern char *gets(char *__str);
+# 842 "/usr/lib/avr/include/stdio.h" 3
+extern size_t fread(void *__ptr, size_t __size, size_t __nmemb,
+        FILE *__stream);
+
+
+
+
+extern void clearerr(FILE *__stream);
+# 859 "/usr/lib/avr/include/stdio.h" 3
+extern int feof(FILE *__stream);
+# 870 "/usr/lib/avr/include/stdio.h" 3
+extern int ferror(FILE *__stream);
+
+
+
+
+
+
+extern int vfscanf(FILE *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+extern int vfscanf_P(FILE *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+
+
+
+extern int fscanf(FILE *__stream, const char *__fmt, ...);
+
+
+
+
+extern int fscanf_P(FILE *__stream, const char *__fmt, ...);
+
+
+
+
+
+
+extern int scanf(const char *__fmt, ...);
+
+
+
+
+extern int scanf_P(const char *__fmt, ...);
+
+
+
+
+
+
+
+extern int vscanf(const char *__fmt, va_list __ap);
+
+
+
+
+
+
+
+extern int sscanf(const char *__buf, const char *__fmt, ...);
+
+
+
+
+extern int sscanf_P(const char *__buf, const char *__fmt, ...);
+# 940 "/usr/lib/avr/include/stdio.h" 3
+static __inline__ int fflush(FILE *stream __attribute__((unused)))
+{
+ return 0;
+}
+
+
+
+
+
+
+__extension__ typedef long long fpos_t;
+extern int fgetpos(FILE *stream, fpos_t *pos);
+extern FILE *fopen(const char *path, const char *mode);
+extern FILE *freopen(const char *path, const char *mode, FILE *stream);
+extern FILE *fdopen(int, const char *);
+extern int fseek(FILE *stream, long offset, int whence);
+extern int fsetpos(FILE *stream, fpos_t *pos);
+extern long ftell(FILE *stream);
+extern int fileno(FILE *);
+extern void perror(const char *s);
+extern int remove(const char *pathname);
+extern int rename(const char *oldpath, const char *newpath);
+extern void rewind(FILE *stream);
+extern void setbuf(FILE *stream, char *buf);
+extern int setvbuf(FILE *stream, char *buf, int mode, size_t size);
+extern FILE *tmpfile(void);
+extern char *tmpnam (char *s);
+
+
+
+}
+# 6 "src/main.cpp" 2
+
+
+
+
+
+
+
+
+# 13 "src/main.cpp"
 extern "C" uint8_t dbl(uint8_t, uint8_t);
+
+extern "C" uint8_t qtr(uint8_t, uint8_t, uint8_t, uint8_t);
+
+
+
+extern "C" {
+  uint8_t tpl(uint8_t a, uint8_t b, uint8_t c) {
+    return dbl(a, b) + c;
+  }
+}
+
+
+
+extern "C" void call(uint8_t (*) (uint8_t), void *);
+
+
+void USART_Init();
+void USART_Transmit(uint8_t data);
 
 int main() {
   
-# 11 "src/main.cpp" 3
+# 34 "src/main.cpp" 3
  (*(volatile uint8_t *)((0x04) + 0x20)) 
-# 11 "src/main.cpp"
+# 34 "src/main.cpp"
       = 1 << 5;
 
-  uint8_t iter = dbl(4, 2);
-
+  uint8_t iter = qtr(2, 2, 2, 2);
+# 53 "src/main.cpp"
   for(uint8_t i = 0; i < iter; i++) {
     _delay_ms(500);
 
     
-# 18 "src/main.cpp" 3
+# 56 "src/main.cpp" 3
    (*(volatile uint8_t *)((0x05) + 0x20)) 
-# 18 "src/main.cpp"
+# 56 "src/main.cpp"
          ^= 1 << 5;
   }
 

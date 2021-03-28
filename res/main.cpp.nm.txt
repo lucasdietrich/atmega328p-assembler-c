@@ -5,3 +5,5 @@
 00000001 a __zero_reg__
          U dbl
 00000000 T main
+         U qtr
+00000000 T tpl

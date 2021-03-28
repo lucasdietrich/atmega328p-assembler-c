@@ -7,18 +7,36 @@ Ideas & todos :
 - pointer to a value as parameter, pointer to a function as parameter
 - handle static memory in assembler (bottom of stack)
 - think about multithreading and stacks (+ size)
-
-## Misc
-
-Infos :
-
-Interesting map to explain how to build a program in c/asm : 
-    - https://www.avrfreaks.net/forum/avr-gcc-compiling-linking-and-assembly
-    - Advanced C / Assembly Mixing : https://www.avrfreaks.net/forum/advanced-c-assembly-mixing
-
-Steps : Preprocessor / building / linking / flashing
+- confirm that optmization option -Os if for space optimization and -O2 is for time optimization
 
 ## General
+
+Official *avr-libc* (Standard C library for AVR-GCC Search) user manual : https://www.gnu.org/savannah-checkouts/non-gnu/avr-libc/user-manual/pages.html
+
+**Steps** : Preprocessor / building / linking / flashing
+
+### Sources:
+- General :
+    - Toolchain overview : https://www.gnu.org/savannah-checkouts/non-gnu/avr-libc/user-manual/overview.html
+- From *avr-libc* user manual :
+    - *sections* : https://www.gnu.org/savannah-checkouts/non-gnu/avr-libc/user-manual/mem_sections.html
+    - *malloc* : https://www.gnu.org/savannah-checkouts/non-gnu/avr-libc/user-manual/malloc.html#malloc_extram
+- Interesting map to explain how to build a program in c/asm : 
+    - https://www.avrfreaks.net/forum/avr-gcc-compiling-linking-and-assembly
+    - Advanced C / Assembly Mixing : https://www.avrfreaks.net/forum/advanced-c-assembly-mixing
+- Name mangling : name mangling : 
+    - https://stackoverflow.com/questions/39934392/avr-gcc-not-linking-c-with-assembly-function
+    - wikipedia : https://en.wikipedia.org/wiki/Name_mangling
+- Library reference : https://www.gnu.org/savannah-checkouts/non-gnu/avr-libc/user-manual/modules.html
+    - Interrupts : https://www.gnu.org/savannah-checkouts/non-gnu/avr-libc/user-manual/group__avr__interrupts.html
+
+### ATmega328p informations
+
+| Device | Flash | EEPROM | RAM | Interrupt Vector Size |
+|---|---|---|---|---|
+| ATmega328P | 32KBytes | 1KBytes | 2KBytes | 2 instruction words/vector |
+
+### Screenshots from ATmega328p datasheet, avr instructions manual or avr-libc manual
 
 AVR architecture : 
 
@@ -36,25 +54,37 @@ Calling convention : https://gcc.gnu.org/wiki/avr-gcc
 
 ![calling_convention.png](./pics/calling_convention.png)
 
-Name mangling : name mangling : 
-- https://stackoverflow.com/questions/39934392/avr-gcc-not-linking-c-with-assembly-function
-- wikipedia : https://en.wikipedia.org/wiki/Name_mangling
+Binutils : https://www.gnu.org/savannah-checkouts/non-gnu/avr-libc/user-manual/overview.html
+
+![binutils.png](./pics/binutils.png)
+
+Ran on ATmega168 :
+
+![ram_location_atmega168.png](./pics/ram_location_atmega168.png)
 
 ## Ubuntu 
 
+Its more convenient to build this project using Ubuntu WSL2 when working on Windows
+
 Installing avr toolchain : `sudo apt-get install gcc-avr binutils-avr avr-libc` (+ debugger/emulator : `sudo apt-get install gdb-avr`)
 
-Install avr libc libraries with command : `sudo apt-get install avr-libc gcc-avr`
+Install avr *avr-libc* libraries with command : `sudo apt-get install avr-libc gcc-avr`
 
-Install avrdude  : `sudo apt install avrdude`
+Install avrdude (to flash program on the arduino) : `sudo apt install avrdude`
 
-Cd to `cd /mnt/c/Users/ldade/Documents/ProjetsRecherche/Embedded/ATmega328p-assembler-c`
+Go to the project directory `cd /mnt/c/Users/ldade/Documents/ProjetsRecherche/Embedded/ATmega328p-assembler-c`
 
-Run : `./scripts/build.sh`
+Run the build script : `./scripts/build.sh`
+
+The script also generate the following files :
+- Display the contents of ELF format files : *firmware.elf.txt*
+- Disassembly : *disassembly.s*, 
+- Preprocessor only on sources : *main.cpp.i* & *main.asm.i*
+- List symbols from object files : *main.cpp.nm* & *main.asm.nm*
 
 ---
 
-## Windows : Obsolete
+## Windows - VS Code w PlatformIO : Obsolete
 
 Build : 
 - `main.cpp` : `C:/Users/ldade/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe -mmcu=atmega328p -DF_CPU=16000000L -DPLATFORMIO=50101 -DARDUINO_AVR_PRO -Iinclude -Isrc -O2 -c src/main.cpp -o .pio\build\pro16MHzatmega328\src\main.cpp.o`
